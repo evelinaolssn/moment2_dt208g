@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Att göra</title>
+</head>
+
+<body>
+
+  <section>
+    <h1>Att göra</h1>
+    <form id="todo-form">
+      <label for="task">Uppgift</label>
+      <input type="text" id="task" name="task" required>
+
+      <label for="priority">Prioritet (1-3):</label>
+      <input type="number" id="priority" name="priority" min="1" max="3" required>
+
+      <button type="submit">Lägg till</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Mina planerade uppgifter:</h2>
+    <ul id="todo-list"></ul>
+  </section>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
