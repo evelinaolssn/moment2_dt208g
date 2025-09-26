@@ -1,9 +1,6 @@
-export function setupCounter(element: HTMLButtonElement) {
-  let counter = 0
-  const setCounter = (count: number) => {
-    counter = count
-    element.innerHTML = `count is ${counter}`
-  }
-  element.addEventListener('click', () => setCounter(counter + 1))
-  setCounter(0)
+//Interface that defines the structure of a todo item
+export interface Todo {
+  priority: number;
+  task: string; 
+  completed: boolean; 
 }
