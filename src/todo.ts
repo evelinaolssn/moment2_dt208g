@@ -23,5 +23,12 @@ export class Todolist {
         this.todos.push({ task, priority, completed: false })
         return true;
     }
+
+    //Marks a todo as done using index in the array
+    markToDoCompleted(todoIndex: number): void {
+        if (todoIndex >= 0 && todoIndex < this.todos.length) {
+            this.todos[todoIndex].completed = true;
+        }
+    }
 }
 
