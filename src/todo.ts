@@ -36,6 +36,13 @@ export class Todolist {
         }
     }
 
+    //Removes a todo by index
+    removeTodo(index: number): void {
+        if (index >= 0 && index < this.todos.length) {
+            this.todos.splice(index, 1);
+        }
+    }
+
     //Saves todo array to localStorage
     saveToLocalStorage(): void {
         localStorage.setItem("todos", JSON.stringify(this.todos));

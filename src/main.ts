@@ -13,7 +13,7 @@ const list = document.getElementById("todo-list") as HTMLUListElement;
 //Function that fetches all todos from class and displays them in the list
 function renderTodos(): void {
     list.innerHTML = "";
-    const todos = todoList.getTodos().slice().sort((a,b) => a.priority - b.priority);
+    const todos = todoList.getTodos().slice().sort((a, b) => a.priority - b.priority);
 
     todos.forEach((todo, index) => {
         const li = document.createElement("li");
@@ -29,9 +29,21 @@ function renderTodos(): void {
             todoList.markTodoCompleted(index);
             todoList.saveToLocalStorage();
             renderTodos();
-
         });
+
+        //Creates a button to remove the todo
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "X";
+
+        //Event listener that removes todo when button is clicked
+        removeButton.addEventListener("click", () => {
+            todoList.removeTodo(index);
+            todoList.saveToLocalStorage();
+            renderTodos();
+        });
+
         li.appendChild(doneButton);
+        li.appendChild(removeButton);
         list.appendChild(li);
     });
 }
@@ -53,7 +65,7 @@ form.addEventListener("submit", (e: Event) => {
     //Saves updated list and refresh the display
     todoList.saveToLocalStorage();
     renderTodos();
- 
+
     ///Resets input fields content after submit 
     taskInput.value = "";
     priorityInput.value = "";

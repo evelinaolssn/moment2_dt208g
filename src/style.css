@@ -110,6 +110,7 @@ button:hover {
 #todo-list li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid #ffffff;
   padding: 1rem;
 }
@@ -120,7 +121,6 @@ button:hover {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-left: 2rem;
 }
 
 /*Light mode color scheme*/
