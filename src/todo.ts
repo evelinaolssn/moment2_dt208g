@@ -5,6 +5,11 @@ export class Todolist {
     //Array that stores to do items
     private todos: Todo[] = [];
 
+    //Constructor that loads todos from localStorage when initialized
+    constructor() {
+        this.loadFromLocalStorage();
+    }
+
     //Returns list of todos
     getTodos(): Todo[] {
         return this.todos;
@@ -25,9 +30,24 @@ export class Todolist {
     }
 
     //Marks a todo as done using index in the array
-    markToDoCompleted(todoIndex: number): void {
+    markTodoCompleted(todoIndex: number): void {
         if (todoIndex >= 0 && todoIndex < this.todos.length) {
             this.todos[todoIndex].completed = true;
+        }
+    }
+
+    //Saves todo array to localStorage
+    saveToLocalStorage(): void {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+    }
+
+    //Loads todo array from localStorage
+    loadFromLocalStorage(): void {
+        const data = localStorage.getItem("todos");
+        if (data) {
+            this.todos = JSON.parse(data)
+        } else {
+            this.todos = [];
         }
     }
 }
