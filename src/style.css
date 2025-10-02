@@ -147,3 +147,15 @@ button:hover {
     border: 2px solid #492f3b;
   }
 }
+
+/*Responsive design for smaller screens*/
+@media (max-width: 500px) {
+  #todo-form {
+    max-width: 100%; 
+    padding: 10px;
+  }
+  
+  #todo-list {
+    max-width: 100%;
+  }
+}
