@@ -13,7 +13,7 @@ const list = document.getElementById("todo-list") as HTMLUListElement;
 //Function that fetches all todos from class and displays them in the list
 function renderTodos(): void {
     list.innerHTML = "";
-    const todos = todoList.getTodos();
+    const todos = todoList.getTodos().slice().sort((a,b) => a.priority - b.priority);
 
     todos.forEach((todo, index) => {
         const li = document.createElement("li");
@@ -53,7 +53,7 @@ form.addEventListener("submit", (e: Event) => {
     //Saves updated list and refresh the display
     todoList.saveToLocalStorage();
     renderTodos();
-
+ 
     ///Resets input fields content after submit 
     taskInput.value = "";
     priorityInput.value = "";
