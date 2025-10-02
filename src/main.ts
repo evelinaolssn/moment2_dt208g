@@ -15,9 +15,23 @@ function renderTodos(): void {
     list.innerHTML = "";
     const todos = todoList.getTodos();
 
-    todos.forEach((todo) => {
+    todos.forEach((todo, index) => {
         const li = document.createElement("li");
         li.textContent = `${todo.task} (Prio - ${todo.priority})`;
+
+        //Creates a button to mark todo list item as completed
+        const doneButton = document.createElement("button");
+        doneButton.textContent = todo.completed ? "Klar" : "Markera som klar";
+        doneButton.disabled = todo.completed;
+
+        //Event listener that updates todo status when button is clicked
+        doneButton.addEventListener("click", () => {
+            todoList.markTodoCompleted(index);
+            todoList.saveToLocalStorage();
+            renderTodos();
+
+        });
+        li.appendChild(doneButton);
         list.appendChild(li);
     });
 }
@@ -26,7 +40,7 @@ function renderTodos(): void {
 form.addEventListener("submit", (e: Event) => {
     e.preventDefault();
 
-    //Get vales from input fields
+    //Get values from input fields
     const task = taskInput.value;
     const priority = parseInt(priorityInput.value);
 
